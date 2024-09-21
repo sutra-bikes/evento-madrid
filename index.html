@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Evento Zero Motorcycles</title>
-    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -13,197 +14,221 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Raleway', sans-serif;
-            background-color: #000;
-            color: #fff;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        h1, h2 {
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            color: #f00;
-            margin-bottom: 20px;
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
-
-        .slider {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .prueba {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin: 20px 0;
-        }
-
-        .prueba .text {
-            text-align: center;
-        }
-
-        .prueba button {
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            background-color: #f00;
-            color: white;
-            border: none;
-            cursor: pointer;
-            margin-top: 20px;
-            border-radius: 5px;
-        }
-
-        .prueba button:hover {
-            background-color: #c00;
-        }
-
-        /* Carousel */
-        .carrousell {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
+        html, body {
+            height: 100%;
+            font-family: 'Oswald', sans-serif;
             overflow: hidden;
-            margin-top: 30px;
+            transition: background-color 0.5s ease;
         }
 
-        .carrousell .carousel-track {
+        /* Contenedor principal */
+        .invitation {
+            height: 100vh;
+            width: 100vw;
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            position: relative;
+            overflow: hidden;
+            align-items: center;
+            justify-content: center;
         }
 
-        .carrousell .imagen {
-            min-width: 100%;
-            box-sizing: border-box;
+        .photos, .words, .descripciones {
+            width: 33%;
         }
 
-        .carrousell .imagen img {
-            width: 100%;
-            height: auto;
+        /* Sección de las palabras con efecto ruleta */
+        .words {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            height: 300px;
         }
 
-        .informacion {
-            margin-top: 30px;
+        /* Estilos para las palabras */
+        .words h1 {
+            position: absolute;
+            transition: transform 0.5s ease, color 0.5s ease;
+            font-size: 36px;
+            color: rgba(0, 0, 0, 0.5);
+            opacity: 0.5;
+        }
+
+        /* Palabra activa en el centro */
+        .words h1.active {
+            transform: scale(1.5);
+            opacity: 1;
+        }
+
+        /* Estilos de texto blanco cuando el fondo es negro */
+        .words h1.white-text, .descripciones h2.white-text {
+            color: white !important;
+        }
+
+        /* Sección de las descripciones */
+        .descripciones h2 {
+            font-size: 24px;
             text-align: center;
-            background-color: #111;
-            padding: 20px;
-            width: 100%;
-            max-width: 800px;
-            border-radius: 10px;
+            color: #000;
+            transition: color 0.5s ease;
         }
 
-        .asistir {
-            text-align: center;
-            margin-top: 20px;
+        .descripciones img {
+            max-width: 80%;
+            margin: 20px;
         }
 
-        .asistir button {
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            background-color: #f00;
-            color: white;
-            border: none;
-            cursor: pointer;
+        /* Estilo del formulario */
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 300px;
+        }
+
+        input, select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
             border-radius: 5px;
         }
 
-        .asistir button:hover {
-            background-color: #c00;
+        input:focus, select:focus {
+            outline: none;
+            border-color: #555;
         }
 
-        /* Responsive Design */
-        @media (min-width: 768px) {
-            .prueba {
-                flex-direction: row;
-                justify-content: center;
-            }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
-            .prueba .text {
-                max-width: 50%;
-            }
+        button:hover {
+            background-color: #444;
+        }
 
-            h1 {
-                font-size: 3rem;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
+        /* Sección de las fotos */
+        .photos img {
+            max-width: 80%;
+            transition: transform 0.5s ease;
         }
 
     </style>
 </head>
 <body>
-    <div class="slider">
-        <h1>Vive una Experiencia única GRACIAS A ZERO MOTORCYCLES y Sutra BIKES</h1>
-    </div>
 
-    <div class="prueba">
-        <div class="text">
-            <h2>PRUEBA LA X-CAPE Y LAS SEIEMMEZZO EN MADRID en nuestro EVENTO EL DÍA 19/10/2024.</h2>
-            <button>QUIERO ASISTIR AL EVENTO!</button>
+    <div class="invitation">
+        <!-- Sección de las motos -->
+        <div class="photos">
+            <img src="moto1.webp" alt="Moto 1">
         </div>
-    </div>
 
-    <!-- Carousel -->
-    <div class="carrousell">
-        <div class="carousel-track">
-            <div class="imagen">
-                <img src="moto1.webp" alt="Imagen 1">
-            </div>
-            <div class="imagen">
-                <img src="moto2.webp" alt="Imagen 2">
-            </div>
-            <div class="imagen">
-                <img src="moto3.webp" alt="Imagen 3">
-            </div>
+        <!-- Sección de las palabras en ruleta -->
+        <div class="words">
+            <h1 class="word">Evento</h1>
+            <h1 class="word">Experiencia</h1>
+            <h1 class="word">Fecha</h1>
+            <h1 class="word">Motos</h1>
+            <h1 class="word">Patrocinadores</h1>
+            <h1 class="word">Apúntate</h1>
         </div>
-    </div>
 
-    <div class="informacion">
-        <p>INFORMACIÓN SOBRE EL EVENTO.</p>
-        <p>Fecha</p>
-        <p>Horario</p>
-        <p>Buena Gente y buenas Motos</p>
-        <p>Catering y mucho más gracias a ZERO MOTORCYCLES Y SUTRA BIKES</p>
-    </div>
-
-    <div class="asistir">
-        <button>Quiero Asistir</button>
-    </div>
-
-    <div class="logos">
-        <!-- Aquí puedes añadir los logos -->
+        <!-- Sección de las descripciones -->
+        <div class="descripciones">
+            <h2>Vive una Experiencia única GRACIAS A ZERO MOTORCYCLES y Sutra BIKES</h2>
+        </div>
     </div>
 
     <script>
-        let slideIndex = 0;
-        const slides = document.querySelectorAll('.carrousell .imagen');
-        const totalSlides = slides.length;
-        const track = document.querySelector('.carousel-track');
+        let currentSection = 0;
+        const words = document.querySelectorAll('.words h1');
+        const descriptions = [
+            "Vive una Experiencia única GRACIAS A ZERO MOTORCYCLES y Sutra BIKES",
+            "PRUEBA LA X-CAPE Y LAS SEIEMMEZZO EN MADRID en nuestro EVENTO EL DÍA 19/10/2024.",
+            "Evento el día 19/10/2024.",
+            "Buena Gente y Buenas Motos.",
+            `<div class="form-container">
+                <img src="sutra.png" alt="Patrocinador Sutra Bikes">
+                <img src="zero.png" alt="Patrocinador Zero Motorcycles">
+            </div>`,
+            `<div class="form-container">
+                <form>
+                    <input type="text" name="nombre" placeholder="Nombre y Apellidos" required>
+                    <input type="tel" name="telefono" placeholder="Teléfono" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <select name="carnet" required>
+                        <option value="" disabled selected>¿Qué Carnet Tienes?</option>
+                        <option value="A">A</option>
+                        <option value="A1">A1</option>
+                        <option value="B">B</option>
+                        <option value="Sin carnet">Sin carnet</option>
+                    </select>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>`
+        ];
 
-        // Mover el carrusel a la siguiente imagen
-        function moveSlide() {
-            slideIndex = (slideIndex + 1) % totalSlides;
-            const moveTo = -slideIndex * 100; // Desplazar según el índice actual
-            track.style.transform = `translateX(${moveTo}%)`;
+        const backgroundColors = ['red', 'black', 'white', 'red', 'black', 'white']; // Colores para el fondo
+        const photos = document.querySelector('.photos img');
+        const descriptionText = document.querySelector('.descripciones h2');
+
+        document.addEventListener('wheel', function(event) {
+            if (event.deltaY > 0) {
+                currentSection = (currentSection + 1) % words.length;
+            } else {
+                currentSection = (currentSection - 1 + words.length) % words.length;
+            }
+
+            updateSection();
+        });
+
+        function updateSection() {
+            // Resetea las palabras
+            words.forEach((word, index) => {
+                word.classList.remove('active', 'white-text');
+                word.style.transform = `translateY(${(index - currentSection) * 60}px) scale(1)`;
+                word.style.opacity = 0.5;
+            });
+
+            // Aplica estilos a la palabra central (activa)
+            words[currentSection].classList.add('active');
+            words[currentSection].style.transform = `translateY(${(0) * 60}px) scale(1.5)`;
+            words[currentSection].style.opacity = 1;
+
+            // Cambia la descripción y la imagen
+            descriptionText.innerHTML = descriptions[currentSection];
+            photos.src = `moto${currentSection + 1}.webp`;
+
+            // Cambia el color de fondo
+            const currentBackgroundColor = backgroundColors[currentSection];
+            document.body.style.backgroundColor = currentBackgroundColor;
+
+            // Si el fondo es negro, cambiar el color del texto a blanco
+            if (currentBackgroundColor === 'black') {
+                words.forEach(word => word.classList.add('white-text'));
+                descriptionText.classList.add('white-text');
+            } else {
+                // Si no es negro, asegurarse de que el texto vuelva a ser oscuro
+                words.forEach(word => word.classList.remove('white-text'));
+                descriptionText.classList.remove('white-text');
+            }
         }
 
-        // Cambiar la diapositiva automáticamente
-        setInterval(moveSlide, 3000); // Cambia de imagen cada 3 segundos
+        // Inicializa la sección
+        updateSection();
     </script>
+
 </body>
 </html>
