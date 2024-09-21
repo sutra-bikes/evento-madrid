@@ -187,7 +187,7 @@
             "Evento el día 19/10/2024.",
             "Buena Gente y Buenas Motos.",
             `<div class="form-container">
-                <img src="LOGO-SUTRA.webp" alt="Patrocinador Sutra Bikes">
+                <img src="sutra.png" alt="Patrocinador Sutra Bikes">
                 <img src="zero.png" alt="Patrocinador Zero Motorcycles">
             </div>`,
             `<div class="form-container">
@@ -211,10 +211,22 @@
         const photos = document.querySelector('.photos img');
         const descriptionText = document.querySelector('.descripciones h2');
 
-        document.addEventListener('wheel', function(event) {
-            if (event.deltaY > 0) {
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        // Evento táctil para móviles
+        document.addEventListener('touchstart', function(event) {
+            touchStartY = event.touches[0].clientY;
+        });
+
+        document.addEventListener('touchmove', function(event) {
+            touchEndY = event.touches[0].clientY;
+        });
+
+        document.addEventListener('touchend', function() {
+            if (touchEndY < touchStartY) {
                 currentSection = (currentSection + 1) % words.length;
-            } else {
+            } else if (touchEndY > touchStartY) {
                 currentSection = (currentSection - 1 + words.length) % words.length;
             }
 
