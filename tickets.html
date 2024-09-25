@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/webp" href="LOGO-SUTRA.webp">
+    <title>Evento Zero Motorcycles</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: 'Oswald', sans-serif;
+            transition: background-color 0.5s ease;
+        }
+
+        header {
+            background: #0078d7;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+        }
+
+        header p {
+            margin: 10px 0;
+        }
+
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            height: 300px; /* Ajustar según sea necesario */
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .slideshow-container img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slideshow-container img.active {
+            opacity: 1;
+        }
+
+        .btn-reserva {
+            background-color: #ff5722;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+
+        .countdown {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        #countdown-timer {
+            font-size: 2em;
+            color: #ff5722;
+        }
+        .formulario {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .formulario h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .formulario label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .formulario input, .formulario select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .formulario button {
+            background-color: #0078d7;
+            color: white;
+            padding: 10px 20px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+        }
+
+        .evento-info {
+            padding: 20px;
+            background-color: #e9ecef;
+            margin: 20px 0;
+        }
+
+        .evento-info h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .evento-info p {
+            margin: 10px 0;
+        }
+
+        .faq {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .faq h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .faq ul {
+            list-style-type: none;
+        }
+
+        .faq li {
+            margin-bottom: 15px;
+        }
+
+        .ubicacion {
+            padding: 20px;
+            text-align: center;
+        }
+
+        #mapa {
+            width: 100%;
+            height: 300px;
+            margin: 20px 0;
+        }
+
+        .btn-direcciones {
+            background-color: #ff5722;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>¡Prueba gratis una Zero Motorcycles!</h1>
+        <p>Reserva tu prueba de conducción y siente la potencia de Zero Motorcycles</p>
+        <div class="slideshow-container">
+            <img src="moto1.webp" alt="Moto 1" class="active">
+            <img src="moto2.webp" alt="Moto 2">
+            <img src="moto3.webp" alt="Moto 3">
+            <img src="moto4.webp" alt="Moto 4">
+        </div>
+        <a href="#reserva" class="btn-reserva">¡Reserva tu prueba ahora!</a>
+    </header>
+
+    <section class="countdown">
+        <h2>Cuenta regresiva hasta el evento</h2>
+        <div id="countdown-timer">00:00:00</div>
+    </section>
+
+    <section id="reserva" class="formulario">
+        <h2>Reserva tu Prueba</h2>
+        <form action="#">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="email">Correo:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" required>
+
+            <label for="hora">Selecciona una hora:</label>
+            <input type="time" id="hora" name="hora" required>
+
+            <label for="modelo">Selecciona el modelo:</label>
+            <select id="modelo" name="modelo" required>
+                <option value="sr-f">SR/F</option>
+                <option value="sr-s">SR/S</option>
+                <option value="fx">FX</option>
+                <option value="ds">DS</option>
+                <option value="ds-r">DS/R</option>
+            </select>
+
+            <label for="carne">Tipo de carné:</label>
+            <input type="text" id="carne" name="carne" required>
+
+            <button type="submit">¡Reserva tu prueba ahora!</button>
+        </form>
+    </section>
+
+    <section class="evento-info">
+        <h2>Información sobre el Evento</h2>
+        <p><strong>Rutas guiadas:</strong> Probaremos a fondo las Zero de la mano de nuestros guías.</p>
+        <p><strong>Servicio de recarga:</strong> Disponibles cargadores de 23KW para los propietarios de Zero.</p>
+        <p><strong>Catering:</strong> Disfruta de nuestro catering mientras esperas.</p>
+        <p><strong>Charla sobre movilidad eléctrica:</strong> Aprende sobre movilidad eléctrica con expertos de Territorio Eléctrico.</p>
+    </section>
+
+    <section class="faq">
+        <h2>Preguntas Frecuentes</h2>
+        <ul>
+            <li><strong>¿Cuánto dura la prueba?</strong> La prueba dura entre 20-30 minutos.</li>
+            <li><strong>¿Qué necesito traer?</strong> Solo necesitas tu licencia de conducir y equipación.</li>
+            <li><strong>¿Es apto para principiantes?</strong> Sí, está diseñado para todos los niveles de experiencia.</li>
+            <li><strong>¿Puedo probar más de un modelo?</strong> Sí, siempre que haya disponibilidad.</li>
+            <li><strong>¿Hay algún costo?</strong> No, es completamente gratuito.</li>
+        </ul>
+    </section>
+
+    <section class="ubicacion">
+        <h2>Ubicación del Evento</h2>
+        <div id="mapa">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3034.0894477889145!2d-3.4873695250762587!3d40.45701947239602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4237d544e83e5d%3A0xf27c8e2aab58a92e!2sC.%20Grafito%2C%201%2C%2028850%20Torrej%C3%B3n%20de%20Ardoz%2C%20Madrid%2C%20Espa%C3%B1a!5e0!3m2!1ses!2ses!4v1695654524355!5m2!1ses!2ses"
+                width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=C.+Grafito%2C+1%2C+28850+Torrej%C3%B3n+de+Ardoz%2C+Madrid%2C+Espa%C3%B1a"
+           class="btn-direcciones">Cómo llegar</a>
+    </section>
+
+    <footer>
+        <p>Zero Motorcycles &copy; 2024. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+
+
+ // Slideshow automático
+ let slideIndex = 0;
+        const slides = document.querySelectorAll('.slideshow-container img');
+
+        function showSlides() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                if (index === slideIndex) {
+                    slide.classList.add('active');
+                }
+            });
+            slideIndex = (slideIndex + 1) % slides.length;
+        }
+
+        setInterval(showSlides, 3000); // Cambia de imagen cada 3 segundos
+        // Contador regresivo
+        const countdownDate = new Date("Oct 30, 2024 10:00:00").getTime();
+
+        const x = setInterval(function () {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown-timer").innerHTML =
+                days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown-timer").innerHTML = "Evento finalizado";
+            }
+        }, 1000);
+
+        // Función para enviar los datos del formulario al webhook
+        document.addEventListener('submit', function (event) {
+            event.preventDefault();  // Prevenir el comportamiento por defecto de recarga de página
+
+            const form = event.target;
+            const data = new FormData(form);
+            const payload = new URLSearchParams(data).toString();  // Decodifica los valores del formulario
+
+            // Envía los datos al webhook
+            fetch('https://webhook.site/tu-webhook-url', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: payload
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Formulario enviado correctamente.');
+                    } else {
+                        alert('Hubo un error al enviar el formulario.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    </script>
+</body>
+</html>
