@@ -23,7 +23,10 @@
         }
 
         header {
-            background: #0078d7;
+            background-image: url('fondosutra.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             color: #fff;
             padding: 20px;
             text-align: center;
@@ -102,10 +105,7 @@
         }
 
         .formulario {
-            background-image: url('fondosutra.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            
             padding: 20px;
             margin: 20px auto;
             width: 80%;
@@ -162,6 +162,22 @@
             bottom: 0;
         }
 
+    .ubicacion{
+            max-width: 1000px;
+    margin: auto;
+    }
+
+
+.btn-direcciones {
+    background-color: #ff5722;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 1.2em;
+}
     </style>
 </head>
 <body>
@@ -254,10 +270,19 @@
 
     <script>
         const images = [
-            '2024_Zero_DSRX-B_Profile_no-shadow.png',
-            '2024_Zero_DSRX-B_Action_no-shadow.png',
-            '2024_Zero_DSRX-B_Behind_no-shadow.png'
-        ];
+    'https://sutra-bikes.github.io/evento-madrid/2024_Zero_DSRX-B_Profile_no-shadow.png',
+    'https://sutra-bikes.github.io/evento-madrid/2024_Zero_DSRX-B_Action_no-shadow.png',
+    'https://sutra-bikes.github.io/evento-madrid/2024_Zero_DSRX-B_Behind_no-shadow.png',
+    'https://sutra-bikes.github.io/evento-madrid/2024_Zero_DSR_Silver_B_Profile_no-shadow.png',
+    'https://sutra-bikes.github.io/evento-madrid/2024_Zero_DS_Quicksand_B_Profile_no-shadow.png',
+    'https://sutra-bikes.github.io/evento-madrid/2024_Zero_FXE_White_B_Profile_no-shadow.png',
+    'https://sutra-bikes.github.io/evento-madrid/2024_Zero_FX_Slate_B_Profile_no-shadow.png',
+    'https://sutra-bikes.github.io/evento-madrid/2024_Zero_SRF_Black_B_Profile_no-shadow.png',
+    'https://sutra-bikes.github.io/evento-madrid/2024_Zero_SRS_Thermal_B_Profile_no-shadow.png',
+    'https://sutra-bikes.github.io/evento-madrid/2024_Zero_SR_Black_B_Profile_no-shadow.png',
+    'https://sutra-bikes.github.io/evento-madrid/2024_Zero_S_White_B_Profile_no-shadow.png'
+];
+
 
         let currentIndex = 0;
 
