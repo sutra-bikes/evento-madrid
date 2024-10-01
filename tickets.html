@@ -52,7 +52,6 @@
 
         /* Estilo de la imagen */
         .slideshow-container img {
-            width: 100%;
             height: 100%;
             object-fit: cover;
             transition: opacity 1s ease-in-out;
@@ -219,10 +218,24 @@
     margin-top: 20px; /* Espaciado superior */
 }
 
+
+.capa {
+    position: absolute; /* Posiciona la capa absolutamente dentro del header */
+    top: 0; /* Comienza desde la parte superior del header */
+    left: 0; /* Comienza desde el lado izquierdo */
+    width: 100%; /* Ocupa todo el ancho del header */
+    height: 100%; /* Ocupa toda la altura del header */
+    background-color: rgba(0, 0, 0, 0.5); /* Color negro semi-transparente */
+    backdrop-filter: blur(5px); /* Aplica un efecto de desenfoque */
+    z-index: 1; /* Asegura que la capa esté debajo del texto */
+}
+
+
     </style>
 </head>
 <body>
     <header>
+        <div class="capa"></div>
         <h1>¡Prueba gratis una Zero Motorcycles!</h1>
         <p>Reserva tu prueba de conducción y siente la potencia de Zero Motorcycles</p>
         <div class="slideshow-container">
