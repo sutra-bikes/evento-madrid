@@ -169,6 +169,7 @@ header h1, header p, .slideshow-container , .btn-reserva {
             border: none;
             border-radius: 5px;
             font-size: 1.2em;
+            text-align: center;
         }
 
         .evento-info, .faq {
@@ -263,11 +264,17 @@ header h1, header p, .slideshow-container , .btn-reserva {
         <a href="#reserva" class="btn-reserva">¡Reserva tu prueba ahora!</a>
     </header>
 
-    <section class="countdown">
-        <h2>Cuenta regresiva hasta el evento</h2>
-        <h3 class="fechalimite"> 19 de Octubre </h3>
-        <div id="countdown-timer">00:00:00</div>
-    </section>
+   <section class="countdown">
+    <h2>Cuenta regresiva hasta el evento</h2>
+    <h3 class="fechalimite">19 de Octubre</h3>
+    <div id="countdown-timer">
+        <span id="days">00</span> días 
+        <span id="hours">00</span> horas 
+        <span id="minutes">00</span> minutos 
+        <span id="seconds">00</span> segundos
+    </div>
+</section>
+
 
     <section id="reserva" class="formulario">
         <h2>Reserva tu Prueba</h2>
@@ -371,25 +378,64 @@ header h1, header p, .slideshow-container , .btn-reserva {
         document.querySelector('.nav-btn.next').onclick = showNextImage;
         document.querySelector('.nav-btn.prev').onclick = showPrevImage;
 
-        // Cuenta regresiva
-        const countdownDate = new Date("2024-12-31T23:59:59").getTime();
+       // Cuenta regresiva
+const countdownDate = new Date("2024-10-19T00:00:00").getTime(); // Cambia a la fecha del evento
 
-        const countdownFunction = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = countdownDate - now;
+const countdownFunction = setInterval(function() {
+    const now = new Date().getTime();
+    const distance = countdownDate - now;
 
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24)); // Calcula los días
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById("countdown-timer").innerHTML = hours + ":" + minutes + ":" + seconds;
+    document.getElementById("days").innerHTML = String(days).padStart(2, '0'); // Muestra los días
+    document.getElementById("hours").innerHTML = String(hours).padStart(2, '0'); // Muestra las horas
+    document.getElementById("minutes").innerHTML = String(minutes).padStart(2, '0'); // Muestra los minutos
+    document.getElementById("seconds").innerHTML = String(seconds).padStart(2, '0'); // Muestra los segundos
 
-            // Si la cuenta regresiva termina, muestra un mensaje
-            if (distance < 0) {
-                clearInterval(countdownFunction);
-                document.getElementById("countdown-timer").innerHTML = "EXPIRED";
-            }
-        }, 1000);
+    // Si la cuenta regresiva termina, muestra un mensaje
+    if (distance < 0) {
+        clearInterval(countdownFunction);
+        document.getElementById("countdown-timer").innerHTML = "EXPIRED";
+    }
+}, 1000);
+
+
+
+<script>
+    document.getElementById('reservation-form').addEventListener('submit', function (event) {
+        event.preventDefault(); // Previene el envío del formulario
+
+        // Recoger los valores del formulario
+        const inputName = encodeURIComponent(document.getElementById('nombre').value);
+        const inputEmail = encodeURIComponent(document.getElementById('email').value);
+        const inputPhone = encodeURIComponent(document.getElementById('telefono').value);
+        const inputBirthdate = encodeURIComponent(document.getElementById('fecha_nacimiento').value);
+        const inputHour = encodeURIComponent(document.getElementById('hora').value);
+        const inputModel = encodeURIComponent(document.getElementById('modelo').value);
+        const inputCarnet = encodeURIComponent(document.getElementById('carne').value);
+        const clientEmail = encodeURIComponent("sutra@gmail.com"); // Puedes cambiar esto si es necesario
+
+        // URL del webhook
+        const url = `https://hooks.zapier.com/hooks/catch/19308114/2m44arp/?clientEmail=${clientEmail}&leadName=${inputName}&leadPhone=${inputPhone}&inputEmail=${inputEmail}&birthdate=${inputBirthdate}&hour=${inputHour}&model=${inputModel}&carnet=${inputCarnet}`;
+
+        // Enviar datos al webhook
+        fetch(url, {
+            method: 'GET', // Usa 'GET' si solo necesitas enviar datos en la URL
+            mode: 'no-cors' // Esto evita problemas de CORS, pero el webhook no puede responder
+        })
+        .then(response => {
+            console.log('Datos enviados:', response);
+            // Aquí puedes agregar una notificación de éxito o redirigir al usuario
+        })
+        .catch(error => {
+            console.error('Error al enviar los datos:', error);
+        });
+    });
+</script>
+
     </script>
 </body>
 </html>
