@@ -8,179 +8,206 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
-         * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-html, body {
-    font-family: 'Oswald', sans-serif;
-    transition: background-color 0.5s ease;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
+        html, body {
+            font-family: 'Oswald', sans-serif;
+            transition: background-color 0.5s ease;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
 
-header {
-    background: #0078d7;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-}
+        header {
+            background: #0078d7;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
 
-header h1 {
-    font-size: 2.5em;
-}
+        header h1 {
+            font-size: 2.5em;
+        }
 
-header p {
-    margin: 10px 0;
-}
+        header p {
+            margin: 10px 0;
+        }
 
-/* Contenedor de las imágenes */
-.slideshow-container {
-    position: relative;
-    width: 100%;
-    height: 400px;
-    margin: 0 auto;
-    max-width: 1200px;
-    overflow: hidden;
-}
+        /* Contenedor de las imágenes */
+        .slideshow-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            height: 400px;
+            max-width: 1200px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
 
-/* Estilo de las imágenes con transición */
-.slideshow-container img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-}
+        /* Estilo de las imágenes con transición */
+        .slideshow-container img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
 
-.slideshow-container img.active {
-    opacity: 1;
-}
+        .slideshow-container img.active {
+            opacity: 1;
+        }
 
-/* Botones para cambiar las imágenes manualmente (opcional) */
-.nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 1.5em;
-    border: none;
-}
+        /* Botones para cambiar las imágenes manualmente */
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 1.5em;
+            border: none;
+            z-index: 2;
+        }
 
-.nav-btn.prev {
-    left: 10px;
-}
+        .nav-btn.prev {
+            left: 10px;
+        }
 
-.nav-btn.next {
-    right: 10px;
-}
+        .nav-btn.next {
+            right: 10px;
+        }
 
-.nav-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
+        .nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
 
+        .btn-reserva {
+            background-color: #ff5722;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
 
-.btn-reserva {
-    background-color: #ff5722;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    display: inline-block;
-    margin-top: 10px;
-    font-size: 1.2em;
-}
+        .countdown {
+            text-align: center;
+            margin: 20px 0;
+        }
 
-.countdown {
-    text-align: center;
-    margin: 20px 0;
-}
+        #countdown-timer {
+            font-size: 2em;
+            color: #ff5722;
+        }
 
-#countdown-timer {
-    font-size: 2em;
-    color: #ff5722;
-}
+        .formulario {
+            background-image: url('fondosutra.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            color: #fff;
+        }
 
-.formulario {
-    background-image: url('fondosutra.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 20px;
-    margin: 20px auto;
-    width: 80%;
-    max-width: 600px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    color: #fff;
-    text-align: center; /* Centra el contenido del formulario */
-}
+        .formulario h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-.formulario h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
+        .formulario label, .formulario input, .formulario select, .formulario button {
+            width: 100%;
+            display: block;
+            margin: 10px 0;
+        }
 
-.formulario label, .formulario input, .formulario select, .formulario button {
-    width: 100%;
-    display: block;
-    margin: 10px 0;
-    text-align: left; /* Cambia el texto del formulario a la izquierda */
-}
+        .formulario input, .formulario select {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
 
-.formulario input, .formulario select {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
+        .formulario button {
+            background-color: #0078d7;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+        }
 
-.formulario button {
-    background-color: #0078d7;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.2em;
-}
+        .evento-info, .faq {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
 
-.evento-info, .faq {
-    max-width: 1000px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
+        .evento-info h2, .faq h2 {
+            text-align: center;
+        }
 
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    position: relative;
-    width: 100%;
-    bottom: 0;
-}
+        .faq ul {
+            list-style-type: none;
+            padding: 0;
+        }
 
+        .faq ul li {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+
+        .ubicacion {
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        #mapa {
+            width: 100%;
+            height: 300px;
+            margin: 20px 0;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>¡Prueba gratis una Zero Motorcycles!</h1>
         <p>Reserva tu prueba de conducción y siente la potencia de Zero Motorcycles</p>
-       <div class="slideshow-container">
-    <!-- Las imágenes se añadirán dinámicamente -->
-    <button class="nav-btn prev">&#10094;</button> <!-- Botón anterior -->
-    <button class="nav-btn next">&#10095;</button> <!-- Botón siguiente -->
-</div>
-
+        <div class="slideshow-container">
+            <button class="nav-btn prev">&#10094;</button>
+            <img src="2024_Zero_DSRX-B_Profile_no-shadow.png" alt="Zero Motorcycle 1" class="active">
+            <img src="2024_Zero_DSRX_Tungsten_B_Profile_no-shadow.png" alt="Zero Motorcycle 2">
+            <button class="nav-btn next">&#10095;</button>
+        </div>
         <a href="#reserva" class="btn-reserva">¡Reserva tu prueba ahora!</a>
     </header>
 
@@ -230,142 +257,67 @@ footer {
 
     <section class="faq">
         <h2>Preguntas Frecuentes</h2>
-         <ul>
-        <li><strong>¿Cuánto dura la prueba?</strong> La prueba dura entre 20-30 minutos.</li>
-        <li><strong>¿Qué necesito traer?</strong> Solo necesitas tu licencia de conducir y equipación.</li>
-        <li><strong>¿Es apto para principiantes?</strong> Sí, está diseñado para todos los niveles de experiencia.</li>
-        <li><strong>¿Puedo probar más de un modelo?</strong> Sí, siempre que haya disponibilidad.</li>
-        <li><strong>¿Hay algún costo?</strong> No, es completamente gratuito.</li>
-        <li><strong>¿Qué modelos estarán disponibles para probar?</strong> Podrás probar una amplia gama de modelos de Zero Motorcycles, incluyendo los modelos SR/F, SR/S, FX, DS y DS/R. Cada modelo ofrece una experiencia única, desde motos urbanas hasta opciones más aventureras.</li>
-        <li><strong>¿Puedo asistir al evento si no tengo una moto eléctrica?</strong> ¡Por supuesto! Este evento es una oportunidad para que cualquier persona interesada en la movilidad eléctrica conozca más sobre las motos Zero y las pruebe, aunque no tengas experiencia previa con motos eléctricas.</li>
-        <li><strong>¿Qué sucede si llego tarde a mi reserva?</strong> Si llegas tarde, haremos lo posible por reubicarte en otra hora según disponibilidad. Sin embargo, te recomendamos llegar unos minutos antes de tu hora asignada para asegurarte de aprovechar la experiencia al máximo.</li>
-        <li><strong>¿Qué ocurre si llueve o hace mal tiempo?</strong> El evento sigue adelante, a menos que las condiciones climáticas extremas representen un riesgo para la seguridad. En ese caso, te notificaremos con antelación para reprogramar tu prueba.</li>
-        <li><strong>¿Habrá cargadores disponibles para mi moto eléctrica?</strong> Sí, durante el evento ofreceremos servicio de recarga de baterías para los propietarios actuales de Zero Motorcycles.</li>
-    </ul>
+        <ul>
+            <li><strong>¿Cuánto dura la prueba?</strong> La prueba dura entre 20-30 minutos.</li>
+            <li><strong>¿Qué necesito traer?</strong> Solo necesitas tu licencia de conducir y equipación.</li>
+            <li><strong>¿Es apto para principiantes?</strong> Sí, está diseñado para todos los niveles de experiencia.</li>
+        </ul>
     </section>
 
     <section class="ubicacion">
         <h2>Ubicación del Evento</h2>
-        <div id="mapa">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3034.0894477889145!2d-3.4873695250762587!3d40.45701947239602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4237d544e83e5d%3A0xf27c8e2aab58a92e!2sC.%20Grafito%2C%201%2C%2028850%20Torrej%C3%B3n%20de%20Ardoz%2C%20Madrid%2C%20Espa%C3%B1a!5e0!3m2!1ses!2ses!4v1695654524355!5m2!1ses!2ses"
-                width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        <a href="https://www.google.com/maps/dir/?api=1&destination=C.+Grafito%2C+1%2C+28850+Torrej%C3%B3n+de+Ardoz%2C+Madrid%2C+Espa%C3%B1a"
-           class="btn-direcciones">Cómo llegar</a>
+        <div id="mapa"></div>
     </section>
 
     <footer>
-        <p>Zero Motorcycles &copy; 2024. Todos los derechos reservados.</p>
+        <p>© 2024 Zero Motorcycles Event. Todos los derechos reservados.</p>
     </footer>
 
     <script>
+        // Script de carrusel de imágenes
+        const slides = document.querySelectorAll('.slideshow-container img');
+        let currentSlide = 0;
 
-
- // Lista de nombres de archivos de las imágenes
-const images = [
-    '2024_Zero_DSRX-B_Profile_no-shadow.png',
-    '2024_Zero_DSRX_Tungsten_B_Profile_no-shadow.png',
-    '2024_Zero_DSR_Silver_B_Profile_no-shadow.png',
-    '2024_Zero_DS_Quicksand_B_Profile_no-shadow.png',
-    '2024_Zero_FXE_White_B_Profile_no-shadow.png',
-    '2024_Zero_FX_Slate_B_Profile_no-shadow.png',
-    '2024_Zero_SRF_Black_B_Profile_no-shadow.png',
-    '2024_Zero_SRS_Thermal_B_Profile_no-shadow.png',
-    '2024_Zero_SR_Black_B_Profile_no-shadow.png',
-    '2024_Zero_S_White_B_Profile_no-shadow.png'
-];
-
-let currentImageIndex = 0;
-const slideshowContainer = document.querySelector('.slideshow-container');
-
-// Función para mostrar la siguiente imagen
-function showNextImage() {
-    const imagesElements = slideshowContainer.querySelectorAll('img');
-    imagesElements[currentImageIndex].classList.remove('active');
-
-    currentImageIndex = (currentImageIndex + 1) % images.length;
-    imagesElements[currentImageIndex].classList.add('active');
-}
-
-// Función para inicializar las imágenes en el contenedor
-function initializeSlideshow() {
-    images.forEach((src, index) => {
-        const img = document.createElement('img');
-        img.src = src;
-        if (index === 0) {
-            img.classList.add('active');  // Muestra la primera imagen
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                }
+            });
         }
-        slideshowContainer.appendChild(img);
-    });
-}
 
-// Cambiar imagen automáticamente cada 5 segundos
-initializeSlideshow();
-setInterval(showNextImage, 5000);
-
-// Funciones opcionales para botones de navegación
-document.querySelector('.prev').addEventListener('click', function() {
-    const imagesElements = slideshowContainer.querySelectorAll('img');
-    imagesElements[currentImageIndex].classList.remove('active');
-
-    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-    imagesElements[currentImageIndex].classList.add('active');
-});
-
-document.querySelector('.next').addEventListener('click', showNextImage);
-
-
-
-        // Contador regresivo
-        const countdownDate = new Date("Oct 30, 2024 10:00:00").getTime();
-
-        const x = setInterval(function () {
-            const now = new Date().getTime();
-            const distance = countdownDate - now;
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("countdown-timer").innerHTML =
-                days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("countdown-timer").innerHTML = "Evento finalizado";
-            }
-        }, 1000);
-
-        // Función para enviar los datos del formulario al webhook
-        document.addEventListener('submit', function (event) {
-            event.preventDefault();  // Prevenir el comportamiento por defecto de recarga de página
-
-            const form = event.target;
-            const data = new FormData(form);
-            const payload = new URLSearchParams(data).toString();  // Decodifica los valores del formulario
-
-            // Envía los datos al webhook
-            fetch('https://webhook.site/tu-webhook-url', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: payload
-            })
-                .then(response => {
-                    if (response.ok) {
-                        alert('Formulario enviado correctamente.');
-                    } else {
-                        alert('Hubo un error al enviar el formulario.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
+        document.querySelector('.nav-btn.prev').addEventListener('click', () => {
+            currentSlide = (currentSlide === 0) ? slides.length - 1 : currentSlide - 1;
+            showSlide(currentSlide);
         });
+
+        document.querySelector('.nav-btn.next').addEventListener('click', () => {
+            currentSlide = (currentSlide === slides.length - 1) ? 0 : currentSlide + 1;
+            showSlide(currentSlide);
+        });
+
+        // Script de cuenta regresiva
+        const countdown = document.getElementById('countdown-timer');
+        const eventDate = new Date('2024-12-01T09:00:00'); // Cambiar por la fecha del evento
+
+        function updateCountdown() {
+            const now = new Date();
+            const remainingTime = eventDate - now;
+
+            if (remainingTime > 0) {
+                const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+                countdown.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            } else {
+                countdown.textContent = "¡El evento ha comenzado!";
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
     </script>
 </body>
 </html>
