@@ -23,7 +23,7 @@
         }
 
         header {
-            background-image: url('fondosutra.jpg');
+            background-image: url('2024_Zero_S_1.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -178,6 +178,43 @@
     margin-top: 10px;
     font-size: 1.2em;
 }
+
+.countdown {
+    text-align: center;
+    padding: 20px;
+}
+
+.fechalimite {
+    background-color: black; /* Fondo negro */
+    color: white;            /* Letras blancas */
+    padding: 10px 20px;     /* Espaciado interno */
+    display: inline-block;   /* Para que el fondo se ajuste al texto */
+    border-radius: 10px;     /* Bordes redondeados */
+    font-size: 2em;         /* Tamaño de fuente */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Sombra */
+    animation: pulsate 1.5s infinite; /* Animación de pulsación */
+}
+
+@keyframes pulsate {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#countdown-timer {
+    font-size: 1.5em; /* Tamaño de fuente para el temporizador */
+    margin-top: 20px; /* Espaciado superior */
+}
+
     </style>
 </head>
 <body>
@@ -195,6 +232,7 @@
 
     <section class="countdown">
         <h2>Cuenta regresiva hasta el evento</h2>
+        <h3 class="fechalimite"> 19 de Octubre </h3>
         <div id="countdown-timer">00:00:00</div>
     </section>
 
@@ -270,9 +308,6 @@
 
     <script>
         const images = [
-    'https://sutra-bikes.github.io/evento-madrid/2024_Zero_DSRX-B_Profile_no-shadow.png',
-    'https://sutra-bikes.github.io/evento-madrid/2024_Zero_DSRX-B_Action_no-shadow.png',
-    'https://sutra-bikes.github.io/evento-madrid/2024_Zero_DSRX-B_Behind_no-shadow.png',
     'https://sutra-bikes.github.io/evento-madrid/2024_Zero_DSR_Silver_B_Profile_no-shadow.png',
     'https://sutra-bikes.github.io/evento-madrid/2024_Zero_DS_Quicksand_B_Profile_no-shadow.png',
     'https://sutra-bikes.github.io/evento-madrid/2024_Zero_FXE_White_B_Profile_no-shadow.png',
