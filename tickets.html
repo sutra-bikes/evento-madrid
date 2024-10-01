@@ -77,8 +77,7 @@ header h1, header p, .slideshow-container , .btn-reserva {
 
         /* Estilo de la imagen */
         .slideshow-container img {
-            height: 100%;
-            object-fit: cover;
+            width: 90%;
             transition: opacity 1s ease-in-out;
         }
 
@@ -276,36 +275,40 @@ header h1, header p, .slideshow-container , .btn-reserva {
 </section>
 
 
-    <section id="reserva" class="formulario">
-        <h2>Reserva tu Prueba</h2>
-        <form action="#">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
+   <section id="reserva" class="formulario">
+    <h2>Reserva tu Prueba</h2>
+    <form id="reservation-form">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
 
-            <label for="email">Correo:</label>
-            <input type="email" id="email" name="email" required>
+        <label for="email">Correo:</label>
+        <input type="email" id="email" name="email" required>
 
-            <label for="telefono">Teléfono:</label>
-            <input type="tel" id="telefono" name="telefono" required>
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono" name="telefono" required>
 
-            <label for="hora">Selecciona una hora:</label>
-            <input type="time" id="hora" name="hora" required>
+        <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
 
-            <label for="modelo">Selecciona el modelo:</label>
-            <select id="modelo" name="modelo" required>
-                <option value="sr-f">SR/F</option>
-                <option value="sr-s">SR/S</option>
-                <option value="fx">FX</option>
-                <option value="ds">DS</option>
-                <option value="ds-r">DS/R</option>
-            </select>
+        <label for="hora">Selecciona una hora:</label>
+        <input type="time" id="hora" name="hora" required>
 
-            <label for="carne">Tipo de carné:</label>
-            <input type="text" id="carne" name="carne" required>
+        <label for="modelo">Selecciona el modelo:</label>
+        <select id="modelo" name="modelo" required>
+            <option value="sr-f">SR/F</option>
+            <option value="sr-s">SR/S</option>
+            <option value="fx">FX</option>
+            <option value="ds">DS</option>
+            <option value="ds-r">DS/R</option>
+        </select>
 
-            <button type="submit">¡Reserva tu prueba ahora!</button>
-        </form>
-    </section>
+        <label for="carne">Tipo de carné:</label>
+        <input type="text" id="carne" name="carne" required>
+
+        <button type="submit">¡Reserva tu prueba ahora!</button>
+    </form>
+</section>
+
 
     <section class="evento-info">
         <h2>Información sobre el Evento</h2>
