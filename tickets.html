@@ -37,15 +37,17 @@ header p {
     margin: 10px 0;
 }
 
+/* Contenedor de las imágenes */
 .slideshow-container {
     position: relative;
     width: 100%;
-    height: 400px; /* Ajustar el tamaño del slideshow */
+    height: 400px;
     margin: 0 auto;
-    max-width: 1200px; /* Limita el tamaño en pantallas grandes */
+    max-width: 1200px;
     overflow: hidden;
 }
 
+/* Estilo de las imágenes con transición */
 .slideshow-container img {
     position: absolute;
     width: 100%;
@@ -58,6 +60,32 @@ header p {
 .slideshow-container img.active {
     opacity: 1;
 }
+
+/* Botones para cambiar las imágenes manualmente (opcional) */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1.5em;
+    border: none;
+}
+
+.nav-btn.prev {
+    left: 10px;
+}
+
+.nav-btn.next {
+    right: 10px;
+}
+
+.nav-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
 
 .btn-reserva {
     background-color: #ff5722;
@@ -147,12 +175,12 @@ footer {
     <header>
         <h1>¡Prueba gratis una Zero Motorcycles!</h1>
         <p>Reserva tu prueba de conducción y siente la potencia de Zero Motorcycles</p>
-        <div class="slideshow-container">
-            <img src="moto1.webp" alt="Moto 1" class="active">
-            <img src="moto2.webp" alt="Moto 2">
-            <img src="moto3.webp" alt="Moto 3">
-            <img src="moto4.webp" alt="Moto 4">
-        </div>
+       <div class="slideshow-container">
+    <!-- Las imágenes se añadirán dinámicamente -->
+    <button class="nav-btn prev">&#10094;</button> <!-- Botón anterior -->
+    <button class="nav-btn next">&#10095;</button> <!-- Botón siguiente -->
+</div>
+
         <a href="#reserva" class="btn-reserva">¡Reserva tu prueba ahora!</a>
     </header>
 
@@ -235,21 +263,61 @@ footer {
     <script>
 
 
- // Slideshow automático
- let slideIndex = 0;
-        const slides = document.querySelectorAll('.slideshow-container img');
+ // Lista de nombres de archivos de las imágenes
+const images = [
+    '2024_Zero_DSRX-B_Profile_no-shadow.png',
+    '2024_Zero_DSRX_Tungsten_B_Profile_no-shadow.png',
+    '2024_Zero_DSR_Silver_B_Profile_no-shadow.png',
+    '2024_Zero_DS_Quicksand_B_Profile_no-shadow.png',
+    '2024_Zero_FXE_White_B_Profile_no-shadow.png',
+    '2024_Zero_FX_Slate_B_Profile_no-shadow.png',
+    '2024_Zero_SRF_Black_B_Profile_no-shadow.png',
+    '2024_Zero_SRS_Thermal_B_Profile_no-shadow.png',
+    '2024_Zero_SR_Black_B_Profile_no-shadow.png',
+    '2024_Zero_S_White_B_Profile_no-shadow.png'
+];
 
-        function showSlides() {
-            slides.forEach((slide, index) => {
-                slide.classList.remove('active');
-                if (index === slideIndex) {
-                    slide.classList.add('active');
-                }
-            });
-            slideIndex = (slideIndex + 1) % slides.length;
+let currentImageIndex = 0;
+const slideshowContainer = document.querySelector('.slideshow-container');
+
+// Función para mostrar la siguiente imagen
+function showNextImage() {
+    const imagesElements = slideshowContainer.querySelectorAll('img');
+    imagesElements[currentImageIndex].classList.remove('active');
+
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    imagesElements[currentImageIndex].classList.add('active');
+}
+
+// Función para inicializar las imágenes en el contenedor
+function initializeSlideshow() {
+    images.forEach((src, index) => {
+        const img = document.createElement('img');
+        img.src = src;
+        if (index === 0) {
+            img.classList.add('active');  // Muestra la primera imagen
         }
+        slideshowContainer.appendChild(img);
+    });
+}
 
-        setInterval(showSlides, 3000); // Cambia de imagen cada 3 segundos
+// Cambiar imagen automáticamente cada 5 segundos
+initializeSlideshow();
+setInterval(showNextImage, 5000);
+
+// Funciones opcionales para botones de navegación
+document.querySelector('.prev').addEventListener('click', function() {
+    const imagesElements = slideshowContainer.querySelectorAll('img');
+    imagesElements[currentImageIndex].classList.remove('active');
+
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+    imagesElements[currentImageIndex].classList.add('active');
+});
+
+document.querySelector('.next').addEventListener('click', showNextImage);
+
+
+
         // Contador regresivo
         const countdownDate = new Date("Oct 30, 2024 10:00:00").getTime();
 
