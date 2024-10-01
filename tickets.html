@@ -27,10 +27,35 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            position: relative;
             color: #fff;
             padding: 20px;
             text-align: center;
         }
+
+
+.capa {
+    position: absolute; /* Posiciona la capa absolutamente dentro del header */
+    top: 0; /* Comienza desde la parte superior del header */
+    left: 0; /* Comienza desde el lado izquierdo */
+    width: 100%; /* Ocupa todo el ancho del header */
+    height: 100%; /* Ocupa toda la altura del header */
+    background-color: rgba(0, 0, 0, 0.5); /* Color negro semi-transparente */
+    backdrop-filter: blur(5px); /* Aplica un efecto de desenfoque */
+    z-index: 0; /* Asegura que la capa esté detrás del texto y otros elementos */
+}
+
+header {
+    position: relative; /* Asegura que el header sea el contexto para el z-index */
+    z-index: 1; /* Asegura que el contenido del header esté por encima de la capa */
+}
+
+/* Otros elementos que quieras que estén por encima */
+header h1, header p, .slideshow-container {
+    position: relative; /* Asegura que estos elementos también estén por encima */
+    z-index: 2; /* Valor más alto que el de la capa */
+}
+
 
         header h1 {
             font-size: 2.5em;
@@ -218,17 +243,6 @@
     margin-top: 20px; /* Espaciado superior */
 }
 
-
-.capa {
-    position: absolute; /* Posiciona la capa absolutamente dentro del header */
-    top: 0; /* Comienza desde la parte superior del header */
-    left: 0; /* Comienza desde el lado izquierdo */
-    width: 100%; /* Ocupa todo el ancho del header */
-    height: 100%; /* Ocupa toda la altura del header */
-    background-color: rgba(0, 0, 0, 0.5); /* Color negro semi-transparente */
-    backdrop-filter: blur(5px); /* Aplica un efecto de desenfoque */
-    z-index: 1; /* Asegura que la capa esté debajo del texto */
-}
 
 
     </style>
