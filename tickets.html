@@ -432,7 +432,6 @@ const countdownFunction = setInterval(function() {
         const inputName = encodeURIComponent(document.getElementById('nombre').value);
         const inputEmail = encodeURIComponent(document.getElementById('email').value);
         const inputPhone = encodeURIComponent(document.getElementById('telefono').value);
-        const inputBirthdate = encodeURIComponent(document.getElementById('fecha_nacimiento').value);
         const inputHour = encodeURIComponent(document.getElementById('hora').value);
         const inputModel = encodeURIComponent(document.getElementById('modelo').value);
         const inputCarnet = encodeURIComponent(document.getElementById('carne').value);
@@ -441,7 +440,7 @@ const countdownFunction = setInterval(function() {
     const confirmadoDiv = document.querySelector('.confirmado');
 
         // URL del webhook
-        const url = `https://hooks.zapier.com/hooks/catch/19308114/2m44arp/?clientEmail=${clientEmail}&leadName=${inputName}&leadPhone=${inputPhone}&inputEmail=${inputEmail}&birthdate=${inputBirthdate}&hour=${inputHour}&model=${inputModel}&carnet=${inputCarnet}`;
+        const url = `https://hooks.zapier.com/hooks/catch/19308114/2m44arp/?clientEmail=${clientEmail}&leadName=${inputName}&leadPhone=${inputPhone}&inputEmail=${inputEmail}&hour=${inputHour}&model=${inputModel}&carnet=${inputCarnet}`;
 
         // Enviar datos al webhook
         fetch(url, {
