@@ -244,7 +244,22 @@ header h1, header p, .slideshow-container , .btn-reserva {
     font-size: 1.5em; /* Tamaño de fuente para el temporizador */
     margin-top: 20px; /* Espaciado superior */
 }
+  .confirmado {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
 
+        .confirmado h1 {
+            font-size: 2em;
+            color: #4caf50;
+        }
+
+        @media (min-width: 768px) {
+            .slideshow-container img {
+                width: 500px;
+            }
+        }
 
 
     </style>
@@ -287,9 +302,6 @@ header h1, header p, .slideshow-container , .btn-reserva {
         <label for="telefono">Teléfono:</label>
         <input type="tel" id="telefono" name="telefono" required>
 
-        <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
-        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
-
         <label for="hora">Selecciona una hora:</label>
         <input type="time" id="hora" name="hora" required>
 
@@ -300,6 +312,7 @@ header h1, header p, .slideshow-container , .btn-reserva {
             <option value="fx">FX</option>
             <option value="ds">DS</option>
             <option value="ds-r">DS/R</option>
+            <option value="s">S</option>
         </select>
 
         <label for="carne">Tipo de carné:</label>
@@ -309,6 +322,10 @@ header h1, header p, .slideshow-container , .btn-reserva {
     </form>
 </section>
 
+
+<div class="confirmado">
+    <h1>Reserva Confirmada</h1>
+</div>
 
     <section class="evento-info">
         <h2>Información sobre el Evento</h2>
@@ -406,6 +423,8 @@ const countdownFunction = setInterval(function() {
 }, 1000);
 
 
+
+
     document.getElementById('reservation-form').addEventListener('submit', function (event) {
         event.preventDefault(); // Previene el envío del formulario
 
@@ -418,6 +437,8 @@ const countdownFunction = setInterval(function() {
         const inputModel = encodeURIComponent(document.getElementById('modelo').value);
         const inputCarnet = encodeURIComponent(document.getElementById('carne').value);
         const clientEmail = encodeURIComponent("sutra@gmail.com"); // Puedes cambiar esto si es necesario
+ const form = document.getElementById('reservation-form');
+    const confirmadoDiv = document.querySelector('.confirmado');
 
         // URL del webhook
         const url = `https://hooks.zapier.com/hooks/catch/19308114/2m44arp/?clientEmail=${clientEmail}&leadName=${inputName}&leadPhone=${inputPhone}&inputEmail=${inputEmail}&birthdate=${inputBirthdate}&hour=${inputHour}&model=${inputModel}&carnet=${inputCarnet}`;
@@ -428,8 +449,8 @@ const countdownFunction = setInterval(function() {
             mode: 'no-cors' // Esto evita problemas de CORS, pero el webhook no puede responder
         })
         .then(response => {
-            console.log('Datos enviados:', response);
-            // Aquí puedes agregar una notificación de éxito o redirigir al usuario
+           confirmadoDiv.style.display = 'block';
+        form.style.display = 'none';
         })
         .catch(error => {
             console.error('Error al enviar los datos:', error);
