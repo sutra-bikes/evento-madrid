@@ -301,7 +301,7 @@ header h1, header p, .slideshow-container , .btn-reserva {
 
         <label for="telefono">Teléfono:</label>
         <input type="tel" id="telefono" name="telefono" required>
-
+         <span id="phoneError" style="display:none;color:red;">Teléfono inválido, debe tener al menos 10 dígitos.</span><br>
         <label for="hora">Selecciona una hora:</label>
         <input type="time" id="hora" name="hora" required>
 
@@ -423,6 +423,36 @@ const countdownFunction = setInterval(function() {
 }, 1000);
 
 
+const telefonoInput = document.getElementById("telefono"); // Ajuste al ID del input de teléfono
+const phoneError = document.getElementById("phoneError");
+const form = document.getElementById("reservation-form");
+
+telefonoInput.addEventListener("input", function () {
+    let telefono = telefonoInput.value.replace(/\s+/g, ''); // Eliminar espacios
+    telefono = telefono.replace(/[^0-9+]/g, ''); // Eliminar caracteres no numéricos excepto +
+
+    if (telefono.startsWith("+34")) { 
+        if (telefono.length > 15) { // Limitar a 15 caracteres si empieza con +34
+            telefono = telefono.slice(0, 15);
+        }
+    } else {
+        telefono = "+34" + telefono; // Añadir el código de país si no está presente
+    }
+
+    telefonoInput.value = telefono; // Actualizar el valor del input
+
+    // Validar longitud del teléfono en tiempo real
+    if (telefono.replace(/\D/g, '').length >= 10) {
+        phoneError.style.display = 'none';
+        form.querySelector('button[type="submit"]').disabled = false;
+    } else {
+        phoneError.style.display = 'block';
+        form.querySelector('button[type="submit"]').disabled = true;
+    }
+});
+
+
+
 
 
     document.getElementById('reservation-form').addEventListener('submit', function (event) {
@@ -456,6 +486,24 @@ const countdownFunction = setInterval(function() {
         });
     });
 </script>
+<!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1060631638800397');
+  fbq('track', 'PageView');
+</script>
+<noscript>
+  <img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1060631638800397&ev=PageView&noscript=1"/>
+</noscript>
+<!-- End Facebook Pixel Code -->
 
 </body>
 </html>
